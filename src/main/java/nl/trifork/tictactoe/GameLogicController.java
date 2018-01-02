@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RestLogicController {
+public class GameLogicController {
 
     @PostMapping("/executeTurn")
     public String move(@RequestParam boolean turn, @RequestParam int column, @RequestParam int row) {

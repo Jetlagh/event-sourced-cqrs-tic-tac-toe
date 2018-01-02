@@ -14,7 +14,7 @@
 * *As* a player *I want* to play Tic-Tac-Toe against the computer *so that* I can entertain myself.
   * **Acceptance criteria**
     * The user and the computer take turns playing.
-    * The first player to achieve three-in-row wins.
+    * The first player to achieve three-in-a-row wins.
     * Three-in-a-row can be horizontal, vertical or diagonal.
     * When the game ends a new game can be started.
     * The achieved score is registered.
@@ -48,6 +48,6 @@
     * **column**: int
     * **row**: int
 * Feel free to introduce new technologies as part of your implementation:
-  * For instance, use AngularJS for the presentation and client-side components, 
+  * For instance, use Angular for the presentation and client-side components, 
     or use a server-side templating framework like Thymeleaf instead.
 * The application can simply be started from your IDE, or by using the Maven command ```mvn spring-boot:run``` 
