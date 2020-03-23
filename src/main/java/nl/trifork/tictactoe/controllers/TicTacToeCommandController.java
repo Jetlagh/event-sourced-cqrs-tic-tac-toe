@@ -20,32 +20,33 @@ import nl.trifork.tictactoe.player.PlayerService;
 @RestController
 public class TicTacToeCommandController {
 
+	private static final String PLAYER_ID_COOKIE = "PLAYER_ID";
 	private final TicTacToeCommandService commandService;
-	private final PlayerService userService;
+	private final PlayerService playerService;
 
-	public TicTacToeCommandController(final TicTacToeCommandService commandService, final PlayerService userService) {
+	public TicTacToeCommandController(final TicTacToeCommandService commandService, final PlayerService playerService) {
 		this.commandService = commandService;
-		this.userService = userService;
+		this.playerService = playerService;
 	}
 
 	@PostMapping("/startGame")
 	@ResponseStatus(CREATED)
 	public CompletableFuture<String> startGame(
-			@CookieValue(value = "userId", required = false) final String idFromCookie,
+			@CookieValue(value = PLAYER_ID_COOKIE, required = false) final String idFromCookie,
 			final HttpServletResponse response) {
-		final String userId = getOrSetUserId(idFromCookie, response);
+		final String userId = getOrSetPlayerId(idFromCookie, response);
 
 		return commandService.createGameAgainstComputer(userId);
 	}
 
-	private String getOrSetUserId(final String idFromCookie, final HttpServletResponse response) {
-		String userId = idFromCookie;
-		if (userId == null) {
-			userId = UUID.randomUUID().toString();
-			final Cookie cookie = new Cookie("userId", userId);
+	private String getOrSetPlayerId(final String idFromCookie, final HttpServletResponse response) {
+		String playerId = idFromCookie;
+		if (playerId == null) {
+			playerId = UUID.randomUUID().toString();
+			final Cookie cookie = new Cookie(PLAYER_ID_COOKIE, playerId);
 			response.addCookie(cookie);
 		}
-		return userId;
+		return playerId;
 	}
 
 	@PostMapping("/executeTurn")
@@ -55,11 +56,11 @@ public class TicTacToeCommandController {
 	}
 
 	@PostMapping("/registerName")
-	public void registerName(@CookieValue(value = "userId", required = false) final String idFromCookie,
+	public void registerName(@CookieValue(value = PLAYER_ID_COOKIE, required = false) final String idFromCookie,
 			@RequestParam final String name, final HttpServletResponse response) {
-		final String userId = getOrSetUserId(idFromCookie, response);
+		final String playerId = getOrSetPlayerId(idFromCookie, response);
 
-		userService.saveUser(userId, name);
+		playerService.saveUser(playerId, name);
 	}
 
 }
