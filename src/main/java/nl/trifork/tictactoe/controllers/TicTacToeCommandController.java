@@ -1,5 +1,7 @@
 package nl.trifork.tictactoe.controllers;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.trifork.tictactoe.commands.TicTacToeCommandService;
@@ -26,6 +29,7 @@ public class TicTacToeCommandController {
 	}
 
 	@PostMapping("/startGame")
+	@ResponseStatus(CREATED)
 	public CompletableFuture<String> startGame(
 			@CookieValue(value = "userId", required = false) final String idFromCookie,
 			final HttpServletResponse response) {
