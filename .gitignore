@@ -1,3 +1,6 @@
 .idea/
 target/
 tic-tac-toe.iml
+.settings/
+.classpath
+.project
