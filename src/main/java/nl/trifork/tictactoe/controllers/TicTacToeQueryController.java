@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.trifork.tictactoe.queries.PlayerScore;
 import nl.trifork.tictactoe.queries.TicTacToeQueryService;
-import nl.trifork.tictactoe.queries.data.PlayerScore;
 
 @RestController
 public class TicTacToeQueryController {

@@ -25,7 +25,6 @@ import nl.trifork.tictactoe.domain.events.GameWon;
 import nl.trifork.tictactoe.player.PlayerService;
 import nl.trifork.tictactoe.queries.data.GameSummary;
 import nl.trifork.tictactoe.queries.data.GameSummaryRepository;
-import nl.trifork.tictactoe.queries.data.PlayerScore;
 import nl.trifork.tictactoe.queries.data.Turn;
 
 @RunWith(SpringRunner.class)

@@ -1,4 +1,4 @@
-package nl.trifork.tictactoe.queries.data;
+package nl.trifork.tictactoe.queries;
 
 import java.time.Duration;
 
