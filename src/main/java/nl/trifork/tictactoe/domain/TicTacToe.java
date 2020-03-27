@@ -9,6 +9,8 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import nl.trifork.tictactoe.commands.ExecuteTurnCmd;
 import nl.trifork.tictactoe.commands.StartGameCmd;
@@ -23,6 +25,8 @@ import nl.trifork.tictactoe.domain.exceptions.TileIsAlreadyFilledException;
 
 @Aggregate
 public class TicTacToe {
+
+	private final Logger logger = LoggerFactory.getLogger(TicTacToe.class);
 
 	public static final int BOARD_SIZE = 3;
 
@@ -96,7 +100,7 @@ public class TicTacToe {
 		}
 
 		if (AggregateLifecycle.isLive()) {
-			System.out.println("Turn executed: \n" + board);
+			logger.info("Turn executed: \n" + board);
 		}
 	}
 
