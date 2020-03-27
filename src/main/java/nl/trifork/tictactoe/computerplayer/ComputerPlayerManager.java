@@ -39,7 +39,7 @@ public class ComputerPlayerManager {
 	}
 
 	@EventHandler
-	public void on(final GameStarted event) {
+	protected void on(final GameStarted event) {
 		final Token computersToken = getComputerPlayerToken(event);
 
 		// The event is not from a game with a computer player
@@ -60,7 +60,7 @@ public class ComputerPlayerManager {
 	}
 
 	@EventHandler
-	public void on(final TurnExecuted event) {
+	protected void on(final TurnExecuted event) {
 		final String gameId = event.getId();
 		final ComputerGame game = gameRepository.findById(gameId).orElse(null);
 
@@ -82,7 +82,7 @@ public class ComputerPlayerManager {
 	}
 
 	@EventHandler
-	public void on(final GameFinished event) {
+	private void on(final GameFinished event) {
 		gameRepository.deleteById(event.getId());
 	}
 
