@@ -39,13 +39,13 @@ public class TicTacToeQueryService {
 	}
 
 	@EventHandler
-	public void on(final GameStarted event, @Timestamp final Instant timestamp) {
+	private void on(final GameStarted event, @Timestamp final Instant timestamp) {
 		final GameSummary game = createGameSummary(event, timestamp);
 		gameRepository.save(game);
 	}
 
 	@EventHandler
-	public void on(final TurnExecuted event) {
+	private void on(final TurnExecuted event) {
 		final Optional<GameSummary> optional = gameRepository.findById(event.getId());
 		final GameSummary game = optional.orElse(null);
 
@@ -61,7 +61,7 @@ public class TicTacToeQueryService {
 	}
 
 	@EventHandler
-	public void on(final GameWon event, @Timestamp final Instant timestamp) {
+	protected void on(final GameWon event, @Timestamp final Instant timestamp) {
 		final GameSummary game = gameRepository.findById(event.getId()).orElse(null);
 
 		if (game == null) {

@@ -13,13 +13,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import nl.trifork.tictactoe.domain.events.GameWon;
 import nl.trifork.tictactoe.player.PlayerService;
@@ -27,10 +25,9 @@ import nl.trifork.tictactoe.queries.data.GameSummary;
 import nl.trifork.tictactoe.queries.data.GameSummaryRepository;
 import nl.trifork.tictactoe.queries.data.Turn;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-class TicTacToeQueryServiceTest {
+public class TicTacToeQueryServiceTest {
 
 	@MockBean
 	private GameSummaryRepository gameRepository;
